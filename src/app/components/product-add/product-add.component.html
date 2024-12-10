@@ -1,0 +1,95 @@
+<div class="container" *ngIf="productFormGroup">
+    <form [formGroup]="productFormGroup">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          class="form-control"
+          formControlName="name"
+          [ngClass]="{'is-invalid': submitted && productFormGroup.controls['name'].errors}"
+        />
+        <div
+          *ngIf="submitted && productFormGroup.controls['name'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="productFormGroup.controls['name'].errors['required']">
+            Name is required
+          </div>
+        </div>
+      </div>
+  
+      <!-- Price Field -->
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          id="price"
+          type="number"
+          class="form-control"
+          formControlName="price"
+          [ngClass]="{'is-invalid': submitted && productFormGroup.controls['price'].errors}"
+        />
+        <div
+          *ngIf="submitted && productFormGroup.controls['price'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="productFormGroup.controls['price'].errors['required']">
+            Price is required
+          </div>
+          <div *ngIf="productFormGroup.controls['price'].errors['min']">
+            Price must be at least 1
+          </div>
+        </div>
+      </div>
+  
+      <!-- Quantity Field -->
+      <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input
+          id="quantity"
+          type="number"
+          class="form-control"
+          formControlName="quantity"
+          [ngClass]="{'is-invalid': submitted && productFormGroup.controls['quantity'].errors}"
+        />
+        <div
+          *ngIf="submitted && productFormGroup.controls['quantity'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="productFormGroup.controls['quantity'].errors['required']">
+            Quantity is required
+          </div>
+          <div *ngIf="productFormGroup.controls['quantity'].errors['min']">
+            Quantity must be at least 1
+          </div>
+        </div>
+      </div>
+  
+      <!-- Selected Checkbox -->
+      <div class="form-group form-check">
+        <input
+          id="selected"
+          type="checkbox"
+          formControlName="selected"
+          class="form-check-input"
+        />
+        <label class="form-check-label" for="selected">Selected</label>
+      </div>
+  
+      <!-- Available Checkbox -->
+      <div class="form-group form-check">
+        <input
+          id="available"
+          type="checkbox"
+          formControlName="available"
+          class="form-check-input"
+        />
+        <label class="form-check-label" for="available">Available</label>
+      </div>
+  
+      <!-- Save Button -->
+      <button type="button" class="btn btn-success" (click)="onSaveProduct()">Save</button>
+    </form>
+  </div>
+  
